@@ -1,0 +1,61 @@
+{
+    "Changes": [
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "(WEBSITE_URL)",
+          "Type": "MX",
+          "TTL": 300,
+          "ResourceRecords": [{"Value": "10 mailserver.purelymail.com."}]
+        }
+      },
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "(WEBSITE_URL)",
+          "Type": "TXT",
+          "TTL": 300,
+          "ResourceRecords": [
+            {"Value": "\"v=spf1 include:_spf.purelymail.com ~all\""},
+            {"Value": "\"purelymail_ownership_proof=[your ownership proof]\""}
+          ]
+        }
+      },
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "purelymail1._domainkey.(WEBSITE_URL)",
+          "Type": "CNAME",
+          "TTL": 300,
+          "ResourceRecords": [{"Value": "key1.dkimroot.purelymail.com."}]
+        }
+      },
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "purelymail2._domainkey.(WEBSITE_URL)",
+          "Type": "CNAME",
+          "TTL": 300,
+          "ResourceRecords": [{"Value": "key2.dkimroot.purelymail.com."}]
+        }
+      },
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "purelymail3._domainkey.(WEBSITE_URL)",
+          "Type": "CNAME",
+          "TTL": 300,
+          "ResourceRecords": [{"Value": "key3.dkimroot.purelymail.com."}]
+        }
+      },
+      {
+        "Action": "UPSERT",
+        "ResourceRecordSet": {
+          "Name": "_dmarc.(WEBSITE_URL)",
+          "Type": "CNAME",
+          "TTL": 300,
+          "ResourceRecords": [{"Value": "dmarcroot.purelymail.com."}]
+        }
+      }
+    ]
+  }
