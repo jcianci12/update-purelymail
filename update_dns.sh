@@ -1,17 +1,21 @@
+#!/bin/bash
 
-# Function to prompt user for Hosted Zone ID and website URL
+# Function to prompt user for Hosted Zone ID, website URL, and ownership proof
 prompt_user() {
     # Prompt user for Hosted Zone ID
     read -p "Enter your AWS Route 53 Hosted Zone ID: " HOSTED_ZONE_ID
 
     # Prompt user for website URL
     read -p "Enter your website URL (e.g., yourwebsite.com.au): " DOMAIN_NAME
+
+    # Prompt user for ownership proof
+    read -p "Enter your ownership proof (if applicable): " OWNERSHIP_PROOF
 }
 
 # Function to update DNS records
 update_record() {
-    # Replace (WEBSITE_URL) with the provided website URL
-    sed "s/(WEBSITE_URL)/$DOMAIN_NAME/g" dns_changes_template.json > dns_changes.json
+    # Replace (WEBSITE_URL) with the provided website URL and (OWNERSHIP_PROOF) with the provided ownership proof
+    sed -e "s/(WEBSITE_URL)/$DOMAIN_NAME/g" -e "s|\[your ownership proof\]|$OWNERSHIP_PROOF|g" dns_changes_template.json > dns_changes.json
 
     # Update DNS records using AWS CLI
     aws route53 change-resource-record-sets \
@@ -21,9 +25,7 @@ update_record() {
 
 # Main function
 main() {
-
-
-    # Prompt user for Hosted Zone ID and website URL
+    # Prompt user for Hosted Zone ID, website URL, and ownership proof
     prompt_user
 
     # Call the function to update DNS records
