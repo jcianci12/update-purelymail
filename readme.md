@@ -1,6 +1,6 @@
-# AWS Route 53 DNS Record Updater
+# DNS Record Updater for Mail Servers
 
-This script automates the process of updating DNS records on AWS Route 53. It prompts the user for the Hosted Zone ID and the website URL, then updates the DNS records accordingly.
+This script automates the process of updating DNS records for mail servers, such as PurelyMail, on AWS Route 53. It prompts the user for the Hosted Zone ID and the domain name, then updates the DNS records accordingly.
 
 ## Prerequisites
 
@@ -30,14 +30,18 @@ This script automates the process of updating DNS records on AWS Route 53. It pr
     ./update_dns_records.sh
     ```
 
-7. Follow the prompts to enter your AWS Route 53 Hosted Zone ID and website URL.
+7. Follow the prompts to enter your AWS Route 53 Hosted Zone ID and domain name.
 
 8. The script will update the DNS records accordingly.
+
+## Customization
+
+- **Mail Server:** This script is designed to update DNS records for mail servers. You can customize it for your specific mail server by modifying the `dns_changes_template.json` file and any other relevant configurations.
 
 ## Notes
 
 - The script assumes you have appropriate permissions to update DNS records on AWS Route 53.
-- Ensure your `dns_changes_template.json` file contains `(WEBSITE_URL)` as a placeholder where you want to replace the website URL.
+- Ensure your `dns_changes_template.json` file contains placeholders where necessary for your mail server configuration.
 
 ## License
 
